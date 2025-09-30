@@ -1,0 +1,70 @@
+{{/* layouts/_default/baseof.html */}}
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            margin: 2rem;
+            line-height: 1.6;
+        }
+
+        header,
+        footer {
+            opacity: .85;
+            font-size: 0.95rem;
+        }
+
+        pre {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow: auto;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #0b63ce;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 style="margin-bottom:0.2rem">{{ .Site.Title }}</h1>
+            <div><a href="{{ " /" | relURL }}">首页</a></div>
+            <hr>
+        </header>
+
+        <main>
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <hr>
+        <footer>
+            <p>由 Hugo 生成 · 支持 Kotlin Playground 可运行代码块</p>
+        </footer>
+    </div>
+
+    {{ partial "kotlin-playground.html" . }}
+</body>
+
+</html>

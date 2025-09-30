@@ -1,0 +1,12 @@
+baseURL = "http://localhost/"
+languageCode = "zh-cn"
+title = "Kotlin 学习笔记（可运行）"
+theme = ""
+
+[pagination]
+pagerSize = 10
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
