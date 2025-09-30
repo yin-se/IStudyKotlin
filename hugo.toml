@@ -1,4 +1,4 @@
-baseURL = "http://localhost/"
+baseURL = "https://yin-se.github.io/IStudyKotlin/"
 languageCode = "zh-cn"
 title = "Kotlin 学习笔记（可运行）"
 theme = ""
