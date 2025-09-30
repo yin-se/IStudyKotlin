@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h2>{{ .Title }}</h2>
+  <ul>
+    {{ range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small>— {{ .Date.Format "2006-01-02" }}</small></li>
+    {{ else }}
+      <li>该栏目下还没有内容。</li>
+    {{ end }}
+  </ul>
+{{ end }}
