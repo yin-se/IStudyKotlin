@@ -1,10 +1,24 @@
 {{ define "main" }}
   <h2>{{ .Title }}</h2>
-  <ul>
-    {{ range .Pages }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small>— {{ .Date.Format "2006-01-02" }}</small></li>
-    {{ else }}
-      <li>该栏目下还没有内容。</li>
-    {{ end }}
-  </ul>
+  {{- $pages := .Pages -}}
+  {{- if .IsHome -}}
+    {{- $pages = .Site.RegularPages -}}
+  {{- end -}}
+  {{ if gt (len $pages) 0 }}
+    <ul>
+      {{ range $pages.ByDate.Reverse }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          {{ with .Date }}
+            <small>
+              <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+            </small>
+          {{ end }}
+          {{ with .Summary }}<div style="margin-top:0.25rem; color:#555;">{{ . }}</div>{{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>暂时还没有内容。</p>
+  {{ end }}
 {{ end }}

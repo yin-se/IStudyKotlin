@@ -3,6 +3,9 @@ languageCode = "zh-cn"
 title = "Kotlin 学习笔记（可运行）"
 theme = ""
 
+[params]
+  description = "记录 Kotlin 学习笔记"
+
 [pagination]
 pagerSize = 10
 
