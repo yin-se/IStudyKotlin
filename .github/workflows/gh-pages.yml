@@ -37,8 +37,10 @@ jobs:
 
       - name: Build (verbose)
         run: |
+          set -euo pipefail
           mkdir -p logs
           hugo --minify --verbose 2>&1 | tee logs/hugo-build.log
+          test -d public
 
       - name: Upload build log (if failed)
         if: failure()

@@ -1,7 +1,21 @@
-{{/* layouts/_default/single.html */}}
 {{ define "main" }}
-<article>
+  <article>
     <h2>{{ .Title }}</h2>
-    {{ .Content }}
-</article>
+    {{ with .Date }}
+      <p><small><time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time></small></p>
+    {{ end }}
+    <div>
+      {{ .Content }}
+    </div>
+  </article>
+  {{ if or .PrevInSection .NextInSection }}
+    <nav style="margin-top:2rem; display:flex; justify-content:space-between; font-size:0.9rem;">
+      <div>
+        {{ with .PrevInSection }}← <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      </div>
+      <div>
+        {{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> →{{ end }}
+      </div>
+    </nav>
+  {{ end }}
 {{ end }}
